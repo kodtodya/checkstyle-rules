@@ -1,1 +1,35 @@
 # test
+
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>check</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>my.com.digi</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${digi-checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <configLocation>digi-integ-checkstyle.xml</configLocation>
+                    <suppressionsLocation>digi-integ-suppressions.xml</suppressionsLocation>
+                    <resourceIncludes>*/*</resourceIncludes>
+                    <failOnViolation>true</failOnViolation>
+                </configuration>
+            </plugin>
